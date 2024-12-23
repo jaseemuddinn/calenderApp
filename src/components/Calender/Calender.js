@@ -435,10 +435,10 @@ const Calendar = () => {
                                 <div
                                     key={index}
                                     className={`h-16 flex items-center justify-center border rounded-lg cursor-pointer transition-all ${isToday
-                                            ? 'bg-blue-200 text-blue-800'
-                                            : hasEvent
-                                                ? 'bg-yellow-100 hover:bg-yellow-200'
-                                                : 'bg-white hover:bg-gray-100'
+                                        ? 'bg-blue-200 text-blue-800'
+                                        : hasEvent
+                                            ? 'bg-yellow-100 hover:bg-yellow-200'
+                                            : 'bg-white hover:bg-gray-100'
                                         }`}
                                 >
                                     {day ? day.getDate() : ''}
@@ -456,8 +456,8 @@ const Calendar = () => {
                             <div
                                 key={index}
                                 className={`p-4 rounded-lg shadow-md cursor-pointer transition-transform transform hover:scale-105 ${event.priority
-                                        ? 'bg-gradient-to-r from-blue-300 to-green-500 text-white'
-                                        : 'bg-white border'
+                                    ? 'bg-gradient-to-r from-blue-300 to-green-500 text-white'
+                                    : 'bg-white border'
                                     }`}
                                 onClick={() => handleEventClick(event)}
                             >
@@ -495,10 +495,11 @@ const Calendar = () => {
                     </div>
                 )} */}
                 {/* Event Modal */}
+                {/* Event Modal */}
                 {selectedEvent && (
                     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                         <div
-                            className="bg-white p-6 rounded-lg shadow-lg w-1/2 relative transition-transform transform scale-95 opacity-0 animate-fadeInUp"
+                            className="bg-white p-6 rounded-lg h-1/2 md:h-2/3 overflow-auto shadow-lg relative transition-transform transform scale-95 opacity-0 animate-fadeInUp w-full sm:w-4/5 md:w-1/2 lg:w-2/3"
                         >
                             <button
                                 className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
@@ -509,22 +510,23 @@ const Calendar = () => {
                             >
                                 &times;
                             </button>
-                            <h3 className="text-xl font-bold mb-4">{selectedEvent.title}</h3>
-                            <p className="mb-2 text-sm">{selectedEvent.date}</p>
+                            <h3 className="text-xl font-bold mb-4 text-center sm:text-left">{selectedEvent.title}</h3>
+                            <p className="mb-2 text-sm text-gray-600">{selectedEvent.date}</p>
                             <p className="mb-4 text-gray-700">{selectedEvent.description}</p>
-                            <div className="grid grid-cols-2 gap-2">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {selectedEvent.images.map((image, index) => (
                                     <img
                                         key={index}
                                         src={"https://t3.ftcdn.net/jpg/08/55/99/18/360_F_855991899_FLUPxeeq1C3UwNIv7ofH0exOn9OyNN8J.jpg"}
                                         alt={selectedEvent.title}
-                                        className="rounded-lg object-cover h-52 w-full"
+                                        className="rounded-lg object-cover w-full h-48 sm:h-52"
                                     />
                                 ))}
                             </div>
                         </div>
                     </div>
                 )}
+
             </div>
         </div>
     );
