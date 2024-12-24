@@ -23,8 +23,8 @@ const geistSans = Geist({
 
 
 export const metadata = {
-  title: "Calendar",
-  description: "Calendar app.",
+  title: "Nagar Nigam Calendar",
+  description: "Official Calender of Nagar Nigam Moradabad.",
 };
 
 export default function RootLayout({ children }) {
