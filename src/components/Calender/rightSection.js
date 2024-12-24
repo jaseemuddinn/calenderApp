@@ -102,7 +102,7 @@ const RightSection = ({ selectedDate }) => {
       "https://i.ibb.co/4dS8nYW/1194368.jpg",
       "https://i.ibb.co/r5MMHYh/1194377.jpg",
       "https://i.ibb.co/T1M9FRv/1194378.jpg",
-    ], // December
+    ], // Jan
     [
       'https://i.ibb.co/T1M9FRv/1194378.jpg',
       'https://i.ibb.co/wpWcFBc/1194440.jpg',
@@ -130,7 +130,7 @@ const RightSection = ({ selectedDate }) => {
       "https://i.ibb.co/4dS8nYW/1194368.jpg",
       "https://i.ibb.co/r5MMHYh/1194377.jpg",
       "https://i.ibb.co/T1M9FRv/1194378.jpg",
-    ], // Jan
+    ], // Feb
     [
       'https://i.ibb.co/T1M9FRv/1194378.jpg',
       'https://i.ibb.co/wpWcFBc/1194440.jpg',
@@ -139,16 +139,7 @@ const RightSection = ({ selectedDate }) => {
       'https://i.ibb.co/0Vnyx97/1194375.jpg',
       'https://i.ibb.co/pPmGvs6/1194383.jpg',
       'https://i.ibb.co/Tt2SF1y/1194387.jpg',
-    ], // February
-    [
-      'https://i.ibb.co/T1M9FRv/1194378.jpg',
-      'https://i.ibb.co/wpWcFBc/1194440.jpg',
-      'https://i.ibb.co/xmc6YZF/1194457.jpg',
-      'https://i.ibb.co/H2V25NK/1194367.jpg',
-      'https://i.ibb.co/0Vnyx97/1194375.jpg',
-      'https://i.ibb.co/pPmGvs6/1194383.jpg',
-      'https://i.ibb.co/Tt2SF1y/1194387.jpg',
-    ], // Mar
+    ], // March
     [
       'https://i.ibb.co/T1M9FRv/1194378.jpg',
       'https://i.ibb.co/wpWcFBc/1194440.jpg',
@@ -249,12 +240,13 @@ const RightSection = ({ selectedDate }) => {
       "https://i.ibb.co/r5MMHYh/1194377.jpg",
       "https://i.ibb.co/T1M9FRv/1194378.jpg",
     ], // Dec
+    
   ];
 
   // const currentImages = monthlyImages[currentMonth] || ['https://i.ibb.co/xmc6YZF/1194457.jpg'];
   const currentImages = monthlyImages[currentMonth]?.length
-  ? monthlyImages[currentMonth]
-  : monthlyImages[0];
+    ? monthlyImages[currentMonth]
+    : monthlyImages[0];
 
   // Update current image every 5 seconds
   useEffect(() => {
