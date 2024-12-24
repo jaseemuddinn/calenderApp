@@ -45,7 +45,7 @@ const Calendar = () => {
         return (
           <div
             key={day}
-            className={`lg:h-24 md:h-16 flex items-center xl:text-5xl text-white md:text-3xl justify-center rounded-full cursor-pointer transition-all ${isToday
+            className={`lg:h-18 md:h-16 flex items-center xl:text-5xl text-white md:text-3xl justify-center rounded-full cursor-pointer transition-all ${isToday
               ? 'bg-yellow-500 font-bold' : isSelected && !occasion ? 'bg-gray-200 text-black font-semibold'
                 : occasion
                   ? 'border border-cyan-500'
@@ -96,7 +96,7 @@ const Calendar = () => {
           >
             <ChevronLeft height={32} width={32} />
           </button>
-          <h2 className="lg:text-6xl text-2xl text-center font-semibold text-white">
+          <h2 className="lg:text-5xl text-2xl text-center font-semibold text-white">
             {months[currentMonth]} {currentYear}
           </h2>
           <button

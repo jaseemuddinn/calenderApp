@@ -10,22 +10,23 @@ const RightSection = ({ selectedDate }) => {
   const [weather, setWeather] = useState(null);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [matchingOccasion, setMatchingOccasion] = useState(null);
+  const [isOverlayActive, setIsOverlayActive] = useState(false);
 
   const specialOccasions = [
     {
       date: "2024-12-25",
       title: "Christmas Celebration",
-      description: "A special occasion to celebrate togetherness and joy!",
+      description: "Nagar Nigam Moradabad wishes everyone a joyful Christmas, celebrating unity, generosity, and reflection. Let us come together with thoughtful gestures, festive cheer, and a commitment to fostering community spirit and shared values.",
     },
     {
       date: "2024-12-31",
       title: "New Year's Eve",
-      description: "Celebrate the end of the year and welcome the new year!",
+      description: "On behalf of Nagar Nigam Moradabad, we extend our heartfelt wishes for a prosperous and joyful New Year. Together, let us continue striving for the progress and development of our city, fostering a cleaner, greener, and more vibrant Moradabad.",
     },
     {
       date: "2025-01-01",
       title: "New Year Celebration",
-      description: "Welcome the New Year with excitement and resolutions!",
+      description: "On behalf of Nagar Nigam Moradabad, we extend our heartfelt wishes for a prosperous and joyful New Year. Together, let us continue striving for the progress and development of our city, fostering a cleaner, greener, and more vibrant Moradabad. loremj kasbdk j fhba kshjdfvb kahjsd bfkhjas dbfk j hasbdf khjasb dfkhjbas dkfba sdkjhf baskjd hbkas hjdd b fjkhas dbfkh jasbdfkjha sdbfkjhas dbdfkjhaf bjkhasdbf jkhasb dfkj hahj",
     },
     {
       date: "2024-02-14",
@@ -77,7 +78,6 @@ const RightSection = ({ selectedDate }) => {
   const monthlyImages = [
     [
       'https://i.ibb.co/T1M9FRv/1194378.jpg',
-      'https://i.ibb.co/wpWcFBc/1194440.jpg',
       'https://i.ibb.co/xmc6YZF/1194457.jpg',
       'https://i.ibb.co/H2V25NK/1194367.jpg',
       'https://i.ibb.co/0Vnyx97/1194375.jpg',
@@ -105,7 +105,6 @@ const RightSection = ({ selectedDate }) => {
     ], // Jan
     [
       'https://i.ibb.co/T1M9FRv/1194378.jpg',
-      'https://i.ibb.co/wpWcFBc/1194440.jpg',
       'https://i.ibb.co/xmc6YZF/1194457.jpg',
       'https://i.ibb.co/H2V25NK/1194367.jpg',
       'https://i.ibb.co/0Vnyx97/1194375.jpg',
@@ -214,7 +213,6 @@ const RightSection = ({ selectedDate }) => {
     ], // Nov
     [
       'https://i.ibb.co/T1M9FRv/1194378.jpg',
-      'https://i.ibb.co/wpWcFBc/1194440.jpg',
       'https://i.ibb.co/xmc6YZF/1194457.jpg',
       'https://i.ibb.co/H2V25NK/1194367.jpg',
       'https://i.ibb.co/0Vnyx97/1194375.jpg',
@@ -242,8 +240,6 @@ const RightSection = ({ selectedDate }) => {
     ], // Dec
 
   ];
-
-  // const currentImages = monthlyImages[currentMonth] || ['https://i.ibb.co/xmc6YZF/1194457.jpg'];
   const currentImages = monthlyImages[currentMonth]?.length
     ? monthlyImages[currentMonth]
     : monthlyImages[0];
@@ -273,9 +269,12 @@ const RightSection = ({ selectedDate }) => {
   return (
     <div className="md:w-1/2 relative h-screen bg-white shadow-lg flex flex-col">
       {overlayVisible && (
-        <div className="absolute top-1/4 md:top-auto md:bottom-32 left-4 right-4 bg-white/20 backdrop-blur-lg p-4 rounded-lg shadow-lg z-10">
-          <p className="md:text-2xl text-lg font-bold">{matchingOccasion.title}</p>
-          <p className="md:text-xl">{matchingOccasion.description}</p>
+        <div className="absolute top-1/4 md:top-auto md:bottom-32 left-4 right-4 bg-white/20 backdrop-blur-lg p-4 rounded-lg shadow-lg z-20 overflow-y-auto h-48 md:h-1/3">
+          <p onClick={()=>setOverlayVisible(false)} className='absolute font-semibold text-red-600 right-4 top-2 cursor-pointer'>
+            X
+          </p>
+          <p className="md:text-2xl text-base font-bold">{matchingOccasion.title}</p>
+          <p className="md:text-xl text-sm ">{matchingOccasion.description}</p>
           <p className="text-md text-black">{matchingOccasion.date}</p>
           <button
             onClick={() => setOverlayVisible(false)}
@@ -285,6 +284,7 @@ const RightSection = ({ selectedDate }) => {
           </button>
         </div>
       )}
+      
       {/* Image Carousel */}
       <div className="relative w-full h-full overflow-hidden">
         <Image
@@ -308,19 +308,19 @@ const RightSection = ({ selectedDate }) => {
       <div className="absolute flex justify-between md:top-4 left-4 right-4 text-black font-bold p-4  rounded-lg z-10 bg-white/30 md:bg-white/20 md:backdrop-blur-lg ">
         {/* Date and Time Section */}
         <div className="flex flex-col text-left font-Montserrat">
-          <p className="md:text-6xl text-xl">{formatTime(currentTime)}</p>
-          <p className="md:text-5xl text-xl">{formatDate(currentTime)}</p>
+          <p className="md:text-3xl lg:text-4xl text-xl">{formatTime(currentTime)}</p>
+          <p className="lg:text-4xl md:text-3xl text-xl">{formatDate(currentTime)}</p>
         </div>
 
         {/* Weather Section */}
         {weather && (
-          <div className=" text-xl md:gap-4 flex flex-col">
+          <div className=" text-xl md:gap-2 flex flex-col">
             {/* <h3 className="text-lg font-bold mb-2">Weather</h3> */}
             <div className="flex items-center mb-2">
               <img
                 src="https://i.ibb.co/nz9w8Wb/temprature.png"
                 alt="Temperature Icon"
-                className="md:w-10 md:h-10 h-5 w-5 mr-2"
+                className="md:w-8 md:h-8 h-5 w-5 mr-2"
               />
               <p>{weather.temp}°C</p>
             </div>
@@ -328,7 +328,7 @@ const RightSection = ({ selectedDate }) => {
               <img
                 src="https://i.ibb.co/1ZWprcD/humidity.png"
                 alt="Humidity Icon"
-                className="md:w-10 md:h-10 h-5 w-5 mr-2"
+                className="md:w-8 md:h-8 h-5 w-5 mr-2"
               />
               <p className='text-lg md:text-xl'>Humidity: {weather.humidity}%</p>
             </div>
@@ -336,9 +336,9 @@ const RightSection = ({ selectedDate }) => {
               <img
                 src="https://i.ibb.co/3y8g04C/wind.png"
                 alt="Wind Speed Icon"
-                className="w-10 h-10 mr-2 hidden md:block"
+                className="w-8 h-8 mr-2 hidden md:block"
               />
-              <p>Wind: {weather.windSpeed} km/h</p>
+              <p>Wind: {weather.wind} km/h</p>
             </div>
           </div>
         )}
@@ -346,53 +346,29 @@ const RightSection = ({ selectedDate }) => {
 
 
       {/* Bottom Overlay: Logos */}
-      <div className="hidden absolute bottom-4 left-0 right-0 md:flex justify-start px-4 space-x-4 z-10">
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center px-4 space-x-4 z-10">
         <Image
-          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
-          src="https://i.ibb.co/tp71NhB/Whats-App-Image-2024-12-23-at-20-46-27-a8aab388.jpg"
-          alt="Logo 1"
-          width={60}
-          height={60}
-        />
-        <Image
-          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
-          src="https://i.ibb.co/FhMdHJy/Whats-App-Image-2024-12-23-at-20-46-29-7df89220.jpg"
-          alt="Logo 2"
-          width={60}
-          height={60}
-        />
-        <Image
-          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
-          src="https://i.ibb.co/3MDKQ2B/Whats-App-Image-2024-12-23-at-20-46-29-7d0573d1.jpg"
-          alt="Logo 3"
-          width={60}
-          height={60}
-        />
-      </div>
-      <div className="absolute bottom-4 left-0 right-0 flex md:hidden justify-start px-4 space-x-4 z-10">
-        <Image
-          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+          className="rounded-full w-12 h-12 md:w-16 md:h-16 "
           src="https://i.ibb.co/tp71NhB/Whats-App-Image-2024-12-23-at-20-46-27-a8aab388.jpg"
           alt="Logo 1"
           width={50}
           height={50}
         />
         <Image
-          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+          className="rounded-full w-12 h-12 md:w-16 md:h-16"
           src="https://i.ibb.co/FhMdHJy/Whats-App-Image-2024-12-23-at-20-46-29-7df89220.jpg"
           alt="Logo 2"
           width={50}
           height={50}
         />
         <Image
-          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+          className="rounded-full w-12 h-12 md:w-16 md:h-16"
           src="https://i.ibb.co/3MDKQ2B/Whats-App-Image-2024-12-23-at-20-46-29-7d0573d1.jpg"
           alt="Logo 3"
           width={50}
           height={50}
         />
       </div>
-
     </div>
   );
 };
