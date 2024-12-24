@@ -252,7 +252,7 @@ const RightSection = ({ selectedDate }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % currentImages.length);
-    }, 5000); // Change image every 5 seconds
+    }, 10000); // Change image every 5 seconds
     return () => clearInterval(interval); // Cleanup
   }, []);
 
