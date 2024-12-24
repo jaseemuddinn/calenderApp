@@ -45,7 +45,7 @@ const Calendar = () => {
         return (
           <div
             key={day}
-            className={`h-28 flex items-center xl:text-7xl text-white justify-center rounded-full cursor-pointer transition-all ${isToday
+            className={`lg:h-28 md:h-16 flex items-center xl:text-7xl text-white md:text-3xl justify-center rounded-full cursor-pointer transition-all ${isToday
               ? 'bg-yellow-500 font-bold' : isSelected && !occasion ? 'bg-gray-200 text-black font-semibold'
                 : occasion
                   ? 'border border-cyan-500'
@@ -89,14 +89,14 @@ const Calendar = () => {
       {/* Calendar Section */}
       <div className="w-full md:w-1/2 p-6 bg-black">
         {/* Month and Year Navigation */}
-        <div className="flex justify-between items-center mb-16">
+        <div className="flex justify-between items-center lg:mb-16 mb-6">
           <button
             className="p-2 rounded-full bg-yellow-500 text-white hover:bg-yellow-600"
             onClick={handlePreviousMonth}
           >
             <ChevronLeft height={32} width={32} />
           </button>
-          <h2 className="text-6xl font-semibold text-white">
+          <h2 className="lg:text-6xl text-2xl text-center font-semibold text-white">
             {months[currentMonth]} {currentYear}
           </h2>
           <button
@@ -110,7 +110,7 @@ const Calendar = () => {
         {/* Calendar Grid */}
         <div className="grid grid-cols-7 gap-2 w-full">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-            <div key={day} className="text-center font-bold text-white text-xl">
+            <div key={day} className="text-center font-bold text-white md:text-xl">
               {day}
             </div>
           ))}

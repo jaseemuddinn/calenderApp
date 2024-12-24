@@ -32,13 +32,13 @@ const RightSection = ({ selectedDate }) => {
       title: "Valentine's Day",
       description: "A day to celebrate love and affection.",
     },
-    
+
   ];
   useEffect(() => {
     const foundOcassion = specialOccasions.find(
       (occasion) => selectedDate && selectedDate.date === occasion.date
     );
-  
+
     if (foundOcassion) {
       setMatchingOccasion(foundOcassion);
       setOverlayVisible(true);
@@ -49,7 +49,7 @@ const RightSection = ({ selectedDate }) => {
       console.log("No special occasion today");
     }
   }, [selectedDate]);
-  
+
 
   useEffect(() => {
     // Fetch weather data here
@@ -83,13 +83,53 @@ const RightSection = ({ selectedDate }) => {
       'https://i.ibb.co/0Vnyx97/1194375.jpg',
       'https://i.ibb.co/pPmGvs6/1194383.jpg',
       'https://i.ibb.co/Tt2SF1y/1194387.jpg',
+      "https://i.ibb.co/yy9h6ZH/1194387.jpg",
+      "https://i.ibb.co/cFsF8w3/1194393.jpg",
+      "https://i.ibb.co/8Ptd1gz/1194395.jpg",
+      "https://i.ibb.co/hyPHcFf/1194396.jpg",
+      "https://i.ibb.co/MNWZtpN/1194400.jpg",
+      "https://i.ibb.co/Z6RMcJf/1194404.jpg",
+      "https://i.ibb.co/yRDkMym/1194415.jpg",
+      "https://i.ibb.co/L0CSS3M/1194423.jpg",
+      "https://i.ibb.co/njw9xY0/1194430.jpg",
+      "https://i.ibb.co/KmSJ4Jy/1194437.jpg",
+      "https://i.ibb.co/PCBydcm/1194441.jpg",
+      "https://i.ibb.co/2nQxd8v/1194445.jpg",
+      "https://i.ibb.co/6yrPtH7/1194451.jpg",
+      "https://i.ibb.co/FzNjvCw/1194364.jpg",
+      "https://i.ibb.co/L5z5vbG/1194367.jpg",
+      "https://i.ibb.co/4dS8nYW/1194368.jpg",
+      "https://i.ibb.co/4dS8nYW/1194368.jpg",
+      "https://i.ibb.co/r5MMHYh/1194377.jpg",
+      "https://i.ibb.co/T1M9FRv/1194378.jpg",
     ], // December
     [
       'https://i.ibb.co/T1M9FRv/1194378.jpg',
-      'https://i.ibb.co/T1M9FRv/1194378.jpg',
-      'https://i.ibb.co/T1M9FRv/1194378.jpg',
-      'https://i.ibb.co/T1M9FRv/1194378.jpg',
-      'https://i.ibb.co/T1M9FRv/1194378.jpg',
+      'https://i.ibb.co/wpWcFBc/1194440.jpg',
+      'https://i.ibb.co/xmc6YZF/1194457.jpg',
+      'https://i.ibb.co/H2V25NK/1194367.jpg',
+      'https://i.ibb.co/0Vnyx97/1194375.jpg',
+      'https://i.ibb.co/pPmGvs6/1194383.jpg',
+      'https://i.ibb.co/Tt2SF1y/1194387.jpg',
+      "https://i.ibb.co/yy9h6ZH/1194387.jpg",
+      "https://i.ibb.co/cFsF8w3/1194393.jpg",
+      "https://i.ibb.co/8Ptd1gz/1194395.jpg",
+      "https://i.ibb.co/hyPHcFf/1194396.jpg",
+      "https://i.ibb.co/MNWZtpN/1194400.jpg",
+      "https://i.ibb.co/Z6RMcJf/1194404.jpg",
+      "https://i.ibb.co/yRDkMym/1194415.jpg",
+      "https://i.ibb.co/L0CSS3M/1194423.jpg",
+      "https://i.ibb.co/njw9xY0/1194430.jpg",
+      "https://i.ibb.co/KmSJ4Jy/1194437.jpg",
+      "https://i.ibb.co/PCBydcm/1194441.jpg",
+      "https://i.ibb.co/2nQxd8v/1194445.jpg",
+      "https://i.ibb.co/6yrPtH7/1194451.jpg",
+      "https://i.ibb.co/FzNjvCw/1194364.jpg",
+      "https://i.ibb.co/L5z5vbG/1194367.jpg",
+      "https://i.ibb.co/4dS8nYW/1194368.jpg",
+      "https://i.ibb.co/4dS8nYW/1194368.jpg",
+      "https://i.ibb.co/r5MMHYh/1194377.jpg",
+      "https://i.ibb.co/T1M9FRv/1194378.jpg",
     ], // Jan
     [
       'https://i.ibb.co/T1M9FRv/1194378.jpg',
@@ -192,12 +232,15 @@ const RightSection = ({ selectedDate }) => {
     ], // Dec
   ];
 
-  const currentImages = monthlyImages[currentMonth] || ['https://i.ibb.co/xmc6YZF/1194457.jpg'];
+  // const currentImages = monthlyImages[currentMonth] || ['https://i.ibb.co/xmc6YZF/1194457.jpg'];
+  const currentImages = monthlyImages[currentMonth]?.length
+  ? monthlyImages[currentMonth]
+  : monthlyImages[0];
 
   // Update current image every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 6);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % currentImages.length);
     }, 5000); // Change image every 5 seconds
     return () => clearInterval(interval); // Cleanup
   }, []);
@@ -217,15 +260,15 @@ const RightSection = ({ selectedDate }) => {
   };
 
   return (
-    <div className="w-1/2 relative h-full bg-white shadow-lg flex flex-col">
+    <div className="md:w-1/2 relative h-screen bg-white shadow-lg flex flex-col">
       {overlayVisible && (
-        <div className="absolute bottom-32 left-4 right-4 bg-white/20 backdrop-blur-lg p-4 rounded-lg shadow-lg z-10">
-          <p className="text-2xl font-bold">{matchingOccasion.title}</p>
-          <p className="text-xl">{matchingOccasion.description}</p>
+        <div className="absolute md:bottom-32 top-1/4 left-4 right-4 bg-white/20 backdrop-blur-lg p-4 rounded-lg shadow-lg z-10">
+          <p className="md:text-2xl text-lg font-bold">{matchingOccasion.title}</p>
+          <p className="md:text-xl">{matchingOccasion.description}</p>
           <p className="text-md text-black">{matchingOccasion.date}</p>
           <button
             onClick={() => setOverlayVisible(false)}
-            className="mt-2 p-2 bg-red-500 text-white rounded-md"
+            className="mt-2 md:p-2 p-1 bg-red-500 text-white rounded-md"
           >
             Close
           </button>
@@ -243,22 +286,22 @@ const RightSection = ({ selectedDate }) => {
       </div>
 
 
-      <div className="absolute flex justify-between top-4 left-4 right-4 text-black font-bold p-4 rounded-lg z-10 bg-white/20 backdrop-blur-lg ">
+      <div className="absolute flex justify-between md:top-4 left-4 right-4 text-black font-bold p-4 rounded-lg z-10 bg-white/30 md:bg-white/20 md:backdrop-blur-lg ">
         {/* Date and Time Section */}
         <div className="flex flex-col text-left font-Montserrat">
-          <p className="text-6xl">{formatTime(currentTime)}</p>
-          <p className="text-5xl">{formatDate(currentTime)}</p>
+          <p className="md:text-6xl text-xl">{formatTime(currentTime)}</p>
+          <p className="md:text-5xl text-xl">{formatDate(currentTime)}</p>
         </div>
 
         {/* Weather Section */}
         {weather && (
-          <div className=" text-3xl gap-4 flex flex-col items-end">
+          <div className=" text-xl md:gap-4 flex flex-col">
             {/* <h3 className="text-lg font-bold mb-2">Weather</h3> */}
             <div className="flex items-center mb-2">
               <img
                 src="https://i.ibb.co/nz9w8Wb/temprature.png"
                 alt="Temperature Icon"
-                className="w-10 h-10 mr-2"
+                className="md:w-10 md:h-10 h-5 w-5 mr-2"
               />
               <p>{weather.temp}°C</p>
             </div>
@@ -266,15 +309,15 @@ const RightSection = ({ selectedDate }) => {
               <img
                 src="https://i.ibb.co/1ZWprcD/humidity.png"
                 alt="Humidity Icon"
-                className="w-10 h-10 mr-2"
+                className="md:w-10 md:h-10 h-5 w-5 mr-2"
               />
-              <p>Humidity: {weather.humidity}%</p>
+              <p className='text-lg md:text-xl'>Humidity: {weather.humidity}%</p>
             </div>
-            <div className="flex items-center">
+            <div className="md:flex items-center hidden">
               <img
                 src="https://i.ibb.co/3y8g04C/wind.png"
                 alt="Wind Speed Icon"
-                className="w-10 h-10 mr-2"
+                className="w-10 h-10 mr-2 hidden md:block"
               />
               <p>Wind: {weather.windSpeed} km/h</p>
             </div>
@@ -285,9 +328,9 @@ const RightSection = ({ selectedDate }) => {
 
       {/* Bottom Overlay: Logos */}
       <div className="absolute bottom-4 left-0 right-0 flex justify-start px-4 space-x-4 z-10">
-        <Image className='rounded-full' src="https://i.ibb.co/tp71NhB/Whats-App-Image-2024-12-23-at-20-46-27-a8aab388.jpg" alt="Logo 1" width={80} height={80} />
-        <Image className='rounded-full' src="https://i.ibb.co/FhMdHJy/Whats-App-Image-2024-12-23-at-20-46-29-7df89220.jpg" alt="Logo 2" width={80} height={80} />
-        <Image className='rounded-full' src="https://i.ibb.co/3MDKQ2B/Whats-App-Image-2024-12-23-at-20-46-29-7d0573d1.jpg" alt="Logo 3" width={80} height={80} />
+        <Image className='rounded-full' src="https://i.ibb.co/tp71NhB/Whats-App-Image-2024-12-23-at-20-46-27-a8aab388.jpg" alt="Logo 1" width={60} height={60} />
+        <Image className='rounded-full' src="https://i.ibb.co/FhMdHJy/Whats-App-Image-2024-12-23-at-20-46-29-7df89220.jpg" alt="Logo 2" width={60} height={60} />
+        <Image className='rounded-full' src="https://i.ibb.co/3MDKQ2B/Whats-App-Image-2024-12-23-at-20-46-29-7d0573d1.jpg" alt="Logo 3" width={60} height={60} />
       </div>
     </div>
   );
