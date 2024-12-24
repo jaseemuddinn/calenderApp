@@ -45,7 +45,7 @@ const Calendar = () => {
         return (
           <div
             key={day}
-            className={`lg:h-28 md:h-16 flex items-center xl:text-7xl text-white md:text-3xl justify-center rounded-full cursor-pointer transition-all ${isToday
+            className={`lg:h-24 md:h-16 flex items-center xl:text-5xl text-white md:text-3xl justify-center rounded-full cursor-pointer transition-all ${isToday
               ? 'bg-yellow-500 font-bold' : isSelected && !occasion ? 'bg-gray-200 text-black font-semibold'
                 : occasion
                   ? 'border border-cyan-500'
@@ -85,9 +85,9 @@ const Calendar = () => {
 
 
   return (
-    <div className="flex flex-col md:flex-row h-screen font-Montserrat">
+    <div className="flex flex-col md:flex-row xl:h-screen font-Montserrat">
       {/* Calendar Section */}
-      <div className="w-full md:w-1/2 p-6 bg-black">
+      <div className="w-full md:w-1/2 p-6 bg-black overflow-y-auto">
         {/* Month and Year Navigation */}
         <div className="flex justify-between items-center lg:mb-16 mb-6">
           <button
