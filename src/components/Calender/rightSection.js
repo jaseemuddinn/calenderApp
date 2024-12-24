@@ -56,7 +56,7 @@ const RightSection = ({ selectedDate }) => {
     const fetchWeather = async () => {
       try {
         const response = await fetch(
-          `http://api.weatherapi.com/v1/current.json?key=c5265023b2474a5786e102512242312&q=Ghaziabad&aqi=no`
+          `http://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=Ghaziabad&aqi=no`
         );
         const data = await response.json();
         setWeather({
