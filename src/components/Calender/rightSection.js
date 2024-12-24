@@ -273,7 +273,7 @@ const RightSection = ({ selectedDate }) => {
   return (
     <div className="md:w-1/2 relative h-screen bg-white shadow-lg flex flex-col">
       {overlayVisible && (
-        <div className="absolute md:bottom-32 top-1/4 left-4 right-4 bg-white/20 backdrop-blur-lg p-4 rounded-lg shadow-lg z-10">
+        <div className="absolute top-1/4 md:top-auto md:bottom-32 left-4 right-4 bg-white/20 backdrop-blur-lg p-4 rounded-lg shadow-lg z-10">
           <p className="md:text-2xl text-lg font-bold">{matchingOccasion.title}</p>
           <p className="md:text-xl">{matchingOccasion.description}</p>
           <p className="text-md text-black">{matchingOccasion.date}</p>
