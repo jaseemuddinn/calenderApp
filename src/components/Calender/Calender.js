@@ -85,9 +85,9 @@ const Calendar = () => {
 
 
   return (
-    <div className="flex flex-col md:flex-row xl:h-screen font-Montserrat">
+    <div className="flex flex-col md:flex-row xl:h-screen h-screen font-Montserrat">
       {/* Calendar Section */}
-      <div className="w-full md:w-1/2 p-6 bg-black overflow-y-auto">
+      <div className="w-full md:w-1/2 h-1/2 p-6 bg-black md:overflow-y-auto ">
         {/* Month and Year Navigation */}
         <div className="flex justify-between items-center lg:mb-16 mb-6">
           <button

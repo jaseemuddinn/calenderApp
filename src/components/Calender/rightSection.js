@@ -240,7 +240,7 @@ const RightSection = ({ selectedDate }) => {
       "https://i.ibb.co/r5MMHYh/1194377.jpg",
       "https://i.ibb.co/T1M9FRv/1194378.jpg",
     ], // Dec
-    
+
   ];
 
   // const currentImages = monthlyImages[currentMonth] || ['https://i.ibb.co/xmc6YZF/1194457.jpg'];
@@ -292,12 +292,20 @@ const RightSection = ({ selectedDate }) => {
           alt="Monthly Image"
           layout="fill"
           objectFit="cover"
-          className="transition-opacity duration-1000"
+          className="transition-opacity duration-1000 hidden md:block"
+        />
+        <Image
+          src={currentImages[currentImageIndex]}
+          alt="Monthly Image"
+          layout="fill"
+          objectFit="contain"
+          objectPosition='bottom'
+          className="transition-opacity duration-1000 block md:hidden"
         />
       </div>
 
 
-      <div className="absolute flex justify-between md:top-4 left-4 right-4 text-black font-bold p-4 rounded-lg z-10 bg-white/30 md:bg-white/20 md:backdrop-blur-lg ">
+      <div className="absolute flex justify-between md:top-4 left-4 right-4 text-black font-bold p-4  rounded-lg z-10 bg-white/30 md:bg-white/20 md:backdrop-blur-lg ">
         {/* Date and Time Section */}
         <div className="flex flex-col text-left font-Montserrat">
           <p className="md:text-6xl text-xl">{formatTime(currentTime)}</p>
@@ -338,11 +346,53 @@ const RightSection = ({ selectedDate }) => {
 
 
       {/* Bottom Overlay: Logos */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-start px-4 space-x-4 z-10">
-        <Image className='rounded-full' src="https://i.ibb.co/tp71NhB/Whats-App-Image-2024-12-23-at-20-46-27-a8aab388.jpg" alt="Logo 1" width={60} height={60} />
-        <Image className='rounded-full' src="https://i.ibb.co/FhMdHJy/Whats-App-Image-2024-12-23-at-20-46-29-7df89220.jpg" alt="Logo 2" width={60} height={60} />
-        <Image className='rounded-full' src="https://i.ibb.co/3MDKQ2B/Whats-App-Image-2024-12-23-at-20-46-29-7d0573d1.jpg" alt="Logo 3" width={60} height={60} />
+      <div className="hidden absolute bottom-4 left-0 right-0 md:flex justify-start px-4 space-x-4 z-10">
+        <Image
+          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+          src="https://i.ibb.co/tp71NhB/Whats-App-Image-2024-12-23-at-20-46-27-a8aab388.jpg"
+          alt="Logo 1"
+          width={60}
+          height={60}
+        />
+        <Image
+          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+          src="https://i.ibb.co/FhMdHJy/Whats-App-Image-2024-12-23-at-20-46-29-7df89220.jpg"
+          alt="Logo 2"
+          width={60}
+          height={60}
+        />
+        <Image
+          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+          src="https://i.ibb.co/3MDKQ2B/Whats-App-Image-2024-12-23-at-20-46-29-7d0573d1.jpg"
+          alt="Logo 3"
+          width={60}
+          height={60}
+        />
       </div>
+      <div className="absolute bottom-4 left-0 right-0 flex md:hidden justify-start px-4 space-x-4 z-10">
+        <Image
+          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+          src="https://i.ibb.co/tp71NhB/Whats-App-Image-2024-12-23-at-20-46-27-a8aab388.jpg"
+          alt="Logo 1"
+          width={50}
+          height={50}
+        />
+        <Image
+          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+          src="https://i.ibb.co/FhMdHJy/Whats-App-Image-2024-12-23-at-20-46-29-7df89220.jpg"
+          alt="Logo 2"
+          width={50}
+          height={50}
+        />
+        <Image
+          className="rounded-full w-15 h-15 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+          src="https://i.ibb.co/3MDKQ2B/Whats-App-Image-2024-12-23-at-20-46-29-7d0573d1.jpg"
+          alt="Logo 3"
+          width={50}
+          height={50}
+        />
+      </div>
+
     </div>
   );
 };
