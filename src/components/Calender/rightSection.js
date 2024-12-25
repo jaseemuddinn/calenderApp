@@ -325,7 +325,7 @@ const RightSection = ({ selectedDate }) => {
   return (
     <div onClick={() => {
       setOverlayVisible(false);
-    }} className="md:w-1/2 relative h-screen bg-white shadow-lg flex flex-col">
+    }} className="md:w-1/2 relative h-screen bg-white shadow-lg flex flex-col flex-grow">
       {overlayVisible && (
         <div onClick={(e) => e.stopPropagation()} className="absolute top-1/4 md:top-auto md:bottom-32 left-4 h-4/5 right-4 bg-white/20 backdrop-blur-lg p-4 rounded-lg shadow-lg z-20 overflow-y-auto md:h-1/3">
           <p onClick={() => setOverlayVisible(false)} className='absolute font-semibold text-red-600 right-4 top-2 cursor-pointer'>
@@ -403,14 +403,13 @@ const RightSection = ({ selectedDate }) => {
       <div className="absolute flex justify-between md:top-4 md:left-4 md:right-4 text-black font-bold p-4 backdrop-blur-lg w-full md:w-auto rounded-lg z-10 bg-white/60 md:bg-white/20 md:backdrop-blur-lg ">
         {/* Date and Time Section */}
         <div className="flex flex-col text-left font-Montserrat">
-          <p className="md:text-2xl xl:text-6xl lg:text-4xl text-xl">{formatTime(currentTime)}</p>
-          <p className="lg:text-4xl xl:text-6xl md:text-2xl text-xl">{formatDate(currentTime)}</p>
+          <p className="md:text-2xl xl:text-6xl lg:text-3xl text-xl">{formatTime(currentTime)}</p>
+          <p className="lg:text-3xl xl:text-6xl md:text-2xl text-xl">{formatDate(currentTime)}</p>
         </div>
 
         {/* Weather Section */}
         {weather && (
           <div className=" text-xl xl:text-2xl md:gap-2 flex flex-col">
-            {/* <h3 className="text-lg font-bold mb-2">Weather</h3> */}
             <div className="flex items-center mb-2">
               <img
                 src="https://i.ibb.co/nz9w8Wb/temprature.png"

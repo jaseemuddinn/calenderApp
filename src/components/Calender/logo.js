@@ -3,7 +3,7 @@ import React from 'react'
 
 function Logo() {
     return (
-        <div className="flex space-x-4 justify-center">
+        <div className="flex space-x-4">
             <Image
                 className="rounded-full w-10 h-10 lg:w-16 lg:h-16 "
                 src="https://i.ibb.co/tp71NhB/Whats-App-Image-2024-12-23-at-20-46-27-a8aab388.jpg"
