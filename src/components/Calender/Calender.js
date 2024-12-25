@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import RightSection from './rightSection';
+import Image from 'next/image';
+import Logo from './logo';
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -19,9 +21,11 @@ const Calendar = () => {
       { date: "2025-05-23", name: "Eid-ul-Fitr", description: "Celebrate the end of Ramadan" },
       { date: '2025-08-15', name: 'Independence Day', description: 'Celebrate India’s independence' },
       { date: "2025-09-04", name: "Eid al-Adha", description: "Celebrate the festival of sacrifice" },
-      { date: "2025-10-22", name: "Dussehra", description: "Joyfull Dusshera!"
+      {
+        date: "2025-10-22", name: "Dussehra", description: "Joyfull Dusshera!"
       },
-      { date: "2025-11-14", name: "Diwali", description: "Prosperous Diwali!"
+      {
+        date: "2025-11-14", name: "Diwali", description: "Prosperous Diwali!"
       },
       { date: '2025-10-02', name: 'Gandhi Jayanti', description: 'Celebrate the birth anniversary of Mahatma Gandhi' },
       { date: '2025-12-25', name: 'Christmas', description: 'Celebrate the holiday season' }
@@ -56,8 +60,8 @@ const Calendar = () => {
         return (
           <div
             key={day}
-            className={`lg:h-18 xl:h-24 md:h-16 flex items-center xl:text-5xl text-white md:text-3xl justify-center rounded-full cursor-pointer transition-all ${isToday
-              ? 'bg-yellow-500 font-bold' : isSelected && !occasion ? 'bg-gray-200 text-black font-semibold'
+            className={`lg:h-14 xl:h-24 2xl:h-32 md:h-16 flex items-center xl:text-5xl text-black md:text-3xl justify-center rounded-full cursor-pointer transition-all ${isToday
+              ? 'bg-white font-bold' : isSelected && !occasion ? 'bg-gray-200 text-black font-semibold'
                 : occasion
                   ? 'border border-cyan-500'
                   : ' hover:bg-gray-200 hover:text-black'
@@ -96,37 +100,39 @@ const Calendar = () => {
 
 
   return (
-    <div className="flex flex-col md:flex-row xl:h-screen h-screen font-Montserrat">
+    <div className="h-screen flex flex-col md:flex-row font-Montserrat">
       {/* Calendar Section */}
-      <div className="w-full md:w-1/2 md:h-full min-h-min p-6 bg-black md:overflow-y-auto ">
+      <div className="w-full md:w-1/2 md:h-full min-h-min p-6 bg-gradient-to-r from-gray-300 via-yellow-500 to-amber-400 md:overflow-y-auto ">
         {/* Month and Year Navigation */}
         <div className="flex justify-between items-center lg:mb-16 mb-6">
           <button
-            className="p-2 rounded-full bg-yellow-500 text-white hover:bg-yellow-600"
+            className="p-2 rounded-full bg-black text-white "
             onClick={handlePreviousMonth}
           >
-            <ChevronLeft height={32} width={32} />
+            <ChevronLeft className='h-4 w-4 md:h-8 md:w-8' />
           </button>
-          <h2 className="lg:text-5xl text-2xl text-center font-semibold text-white">
+          <h2 className="lg:text-5xl text-2xl text-center font-semibold text-black">
             {months[currentMonth]} {currentYear}
           </h2>
           <button
-            className="p-2 rounded-full bg-yellow-500 text-white hover:bg-yellow-600"
+            className="p-2 rounded-full bg-black text-white "
             onClick={handleNextMonth}
           >
-            <ChevronRight height={32} width={32} />
+            <ChevronRight className='h-4 w-4 md:h-8 md:w-8'  />
           </button>
         </div>
 
         {/* Calendar Grid */}
         <div className="grid grid-cols-7 gap-2 w-full">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-            <div key={day} className="text-center font-bold text-white md:text-xl">
+            <div key={day} className="text-center font-bold text-black md:text-xl">
               {day}
             </div>
           ))}
-
           {renderCalendarDays()}
+        </div>
+        <div className='hidden md:block relative bottom-4 px-2 left-0 right-0 justify-center md:justify-center z-10'>
+          <Logo />
         </div>
       </div>
 
