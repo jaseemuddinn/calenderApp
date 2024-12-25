@@ -11,11 +11,22 @@ const Calendar = () => {
 
   // For illustration, you can add special occasions in the `occasions` array
   const occasions = [
-    { date: '2024-12-25', name: 'Christmas', description: 'Celebrate the holiday season!' },
-    { date: '2024-12-31', name: 'New Year\'s Eve', description: 'Celebrate the new year!' },
-    {
-      date: '2025-01-01', name: 'New Year\'s Day', description: 'Celebrate the first day of the year!',
-    }
+    [
+      { date: '2025-01-26', name: 'Republic Day', description: 'Celebrate the Constitution of India' },
+      { date: '2025-03-29', name: 'Holi', description: 'Celebrate the festival of colors' },
+      { date: '2025-04-14', name: 'Ambedkar Jayanti', description: 'Celebrate the birth anniversary of Dr. B.R. Ambedkar' },
+      { date: '2025-05-01', name: 'Labour Day', description: 'Celebrate the achievements of workers' },
+      { date: "2025-05-23", name: "Eid-ul-Fitr", description: "Celebrate the end of Ramadan" },
+      { date: '2025-08-15', name: 'Independence Day', description: 'Celebrate India’s independence' },
+      { date: "2025-09-04", name: "Eid al-Adha", description: "Celebrate the festival of sacrifice" },
+      { date: "2025-10-22", name: "Dussehra", description: "Joyfull Dusshera!"
+      },
+      { date: "2025-11-14", name: "Diwali", description: "Prosperous Diwali!"
+      },
+      { date: '2025-10-02', name: 'Gandhi Jayanti', description: 'Celebrate the birth anniversary of Mahatma Gandhi' },
+      { date: '2025-12-25', name: 'Christmas', description: 'Celebrate the holiday season' }
+    ]
+
   ];
 
   const months = [
@@ -45,7 +56,7 @@ const Calendar = () => {
         return (
           <div
             key={day}
-            className={`lg:h-18 md:h-16 flex items-center xl:text-5xl text-white md:text-3xl justify-center rounded-full cursor-pointer transition-all ${isToday
+            className={`lg:h-18 xl:h-24 md:h-16 flex items-center xl:text-5xl text-white md:text-3xl justify-center rounded-full cursor-pointer transition-all ${isToday
               ? 'bg-yellow-500 font-bold' : isSelected && !occasion ? 'bg-gray-200 text-black font-semibold'
                 : occasion
                   ? 'border border-cyan-500'
@@ -87,7 +98,7 @@ const Calendar = () => {
   return (
     <div className="flex flex-col md:flex-row xl:h-screen h-screen font-Montserrat">
       {/* Calendar Section */}
-      <div className="w-full md:w-1/2 md:h-full h-1/2 p-6 bg-black md:overflow-y-auto ">
+      <div className="w-full md:w-1/2 md:h-full min-h-min p-6 bg-black md:overflow-y-auto ">
         {/* Month and Year Navigation */}
         <div className="flex justify-between items-center lg:mb-16 mb-6">
           <button

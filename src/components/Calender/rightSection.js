@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { CirclePlay, Info, Play, X } from 'lucide-react';
 
 const RightSection = ({ selectedDate }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -10,7 +11,12 @@ const RightSection = ({ selectedDate }) => {
   const [weather, setWeather] = useState(null);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [matchingOccasion, setMatchingOccasion] = useState(null);
-  const [isOverlayActive, setIsOverlayActive] = useState(false);
+  const [overlayContent, setOverlayContent] = useState(null);
+
+  const handleOverlayClose = (content) => {
+    setOverlayContent(null);
+  }
+
 
   const specialOccasions = [
     {
@@ -29,11 +35,10 @@ const RightSection = ({ selectedDate }) => {
       description: "On behalf of Nagar Nigam Moradabad, we extend our heartfelt wishes for a prosperous and joyful New Year. Together, let us continue striving for the progress and development of our city, fostering a cleaner, greener, and more vibrant Moradabad. loremj kasbdk j fhba kshjdfvb kahjsd bfkhjas dbfk j hasbdf khjasb dfkhjbas dkfba sdkjhf baskjd hbkas hjdd b fjkhas dbfkh jasbdfkjha sdbfkjhas dbdfkjhaf bjkhasdbf jkhasb dfkj hahj",
     },
     {
-      date: "2024-02-14",
-      title: "Valentine's Day",
-      description: "A day to celebrate love and affection.",
-    },
-
+      date: "2025-01-26",
+      title: "Republic Day",
+      description: "Nagar Nigam Moradabad wishes everyone a Happy Republic Day, celebrating the spirit of unity, diversity, and progress. Let us honor the Constitution of India and work together for a brighter future for all citizens.",
+    }
   ];
   useEffect(() => {
     const foundOcassion = specialOccasions.find(
@@ -267,12 +272,15 @@ const RightSection = ({ selectedDate }) => {
   };
 
   return (
-    <div className="md:w-1/2 relative h-screen bg-white shadow-lg flex flex-col">
+    <div onClick={() => {
+      setOverlayVisible(false);
+    }} className="md:w-1/2 relative h-screen bg-white shadow-lg flex flex-col">
       {overlayVisible && (
-        <div className="absolute top-1/4 md:top-auto md:bottom-32 left-4 right-4 bg-white/20 backdrop-blur-lg p-4 rounded-lg shadow-lg z-20 overflow-y-auto h-48 md:h-1/3">
-          <p onClick={()=>setOverlayVisible(false)} className='absolute font-semibold text-red-600 right-4 top-2 cursor-pointer'>
-            X
+        <div onClick={(e)=> e.stopPropagation()} className="absolute top-1/4 md:top-auto md:bottom-32 left-4 h-4/5 right-4 bg-white/20 backdrop-blur-lg p-4 rounded-lg shadow-lg z-20 overflow-y-auto md:h-1/3">
+          <p onClick={() => setOverlayVisible(false)} className='absolute font-semibold text-red-600 right-4 top-2 cursor-pointer'>
+            <X />
           </p>
+          
           <p className="md:text-2xl text-base font-bold">{matchingOccasion.title}</p>
           <p className="md:text-xl text-sm ">{matchingOccasion.description}</p>
           <p className="text-md text-black">{matchingOccasion.date}</p>
@@ -284,7 +292,43 @@ const RightSection = ({ selectedDate }) => {
           </button>
         </div>
       )}
-      
+      {overlayContent && (
+          <div
+            className="absolute inset-0 flex items-center justify-center   z-20"
+            onClick={handleOverlayClose}
+          >
+            <div
+              className="absolute md:top-auto md:bottom-32 left-4 right-4 bg-white/60 backdrop-blur-lg p-4 rounded-lg shadow-lg z-20 overflow-y-auto h-4/5 md:min-h-min max-h-[90vh] md:h-1/3"
+              onClick={(e) => e.stopPropagation()} 
+            >
+              {/* Close Button */}
+              <p
+                onClick={handleOverlayClose}
+                className="absolute md:hidden top-2 right-4 text-red-500 cursor-pointer text-xl font-bold z-20"
+              >
+                <X />
+              </p>
+
+              {/* Conditional Content */}
+              {overlayContent.type === 'info' && (
+                <div className=''>
+                  <h2 className="text-xl font-bold">About Nagar Nigam Moradabad Gau Shaala</h2>
+                  <p className="mt-2">{overlayContent.content}</p>
+                </div>
+              )}
+
+              {overlayContent.type === 'video' && (
+                <div className="w-full">
+                  <video controls className="w-full h-full rounded-md">
+                    <source src={overlayContent.content} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
       {/* Image Carousel */}
       <div className="relative w-full h-full overflow-hidden">
         <Image
@@ -305,16 +349,16 @@ const RightSection = ({ selectedDate }) => {
       </div>
 
 
-      <div className="absolute flex justify-between md:top-4 left-4 right-4 text-black font-bold p-4  rounded-lg z-10 bg-white/30 md:bg-white/20 md:backdrop-blur-lg ">
+      <div className="absolute flex justify-between md:top-4 md:left-4 md:right-4 text-black font-bold p-4 backdrop-blur-lg w-full md:w-auto rounded-lg z-10 bg-white/60 md:bg-white/20 md:backdrop-blur-lg ">
         {/* Date and Time Section */}
         <div className="flex flex-col text-left font-Montserrat">
-          <p className="md:text-3xl lg:text-4xl text-xl">{formatTime(currentTime)}</p>
-          <p className="lg:text-4xl md:text-3xl text-xl">{formatDate(currentTime)}</p>
+          <p className="md:text-3xl xl:text-6xl lg:text-4xl text-xl">{formatTime(currentTime)}</p>
+          <p className="lg:text-4xl xl:text-6xl md:text-3xl text-xl">{formatDate(currentTime)}</p>
         </div>
 
         {/* Weather Section */}
         {weather && (
-          <div className=" text-xl md:gap-2 flex flex-col">
+          <div className=" text-xl xl:text-2xl md:gap-2 flex flex-col">
             {/* <h3 className="text-lg font-bold mb-2">Weather</h3> */}
             <div className="flex items-center mb-2">
               <img
@@ -330,7 +374,7 @@ const RightSection = ({ selectedDate }) => {
                 alt="Humidity Icon"
                 className="md:w-8 md:h-8 h-5 w-5 mr-2"
               />
-              <p className='text-lg md:text-xl'>Humidity: {weather.humidity}%</p>
+              <p className='text-lg md:text-xl xl:text-2xl'>Humidity: {weather.humidity}%</p>
             </div>
             <div className="md:flex items-center hidden">
               <img
@@ -346,28 +390,59 @@ const RightSection = ({ selectedDate }) => {
 
 
       {/* Bottom Overlay: Logos */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center px-4 space-x-4 z-10">
+      <div className="absolute bottom-4 left-0 right-0 flex justify-start px-4 space-x-4 z-10">
         <Image
-          className="rounded-full w-12 h-12 md:w-16 md:h-16 "
+          className="rounded-full w-10 h-10 lg:w-16 lg:h-16 "
           src="https://i.ibb.co/tp71NhB/Whats-App-Image-2024-12-23-at-20-46-27-a8aab388.jpg"
           alt="Logo 1"
           width={50}
           height={50}
         />
         <Image
-          className="rounded-full w-12 h-12 md:w-16 md:h-16"
+          className="rounded-full w-10 h-10 lg:w-16 lg::h-16"
           src="https://i.ibb.co/FhMdHJy/Whats-App-Image-2024-12-23-at-20-46-29-7df89220.jpg"
           alt="Logo 2"
           width={50}
           height={50}
         />
         <Image
-          className="rounded-full w-12 h-12 md:w-16 md:h-16"
+          className="rounded-full w-10 h-10 lg::w-16 lg:h-16"
           src="https://i.ibb.co/3MDKQ2B/Whats-App-Image-2024-12-23-at-20-46-29-7d0573d1.jpg"
           alt="Logo 3"
           width={50}
           height={50}
         />
+      </div>
+      <div className="relative">
+        {/* Main Content */}
+        <div className="text-white absolute flex bottom-4 left-0 right-0 justify-end px-4 space-x-4 z-10">
+          <div
+            className="flex flex-col items-center cursor-pointer"
+            onClick={() =>
+              setOverlayContent({
+                type: 'info',
+                content: 'Nagar Nigam Moradabad Gau Shaala is a non-profit organization dedicated to the welfare of cows and other animals. We provide shelter, food, and medical care to abandoned and injured animals. Our mission is to create a safe and loving environment for all animals, where they can live in peace and harmony. We believe that every animal deserves to be treated with kindness and respect, and we work tirelessly to ensure that all animals in our care receive the love and attention they deserve. Thank you for supporting our cause!',
+              })
+            }
+          >
+            <Info className="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 text-black md:text-white md:bg-transparent bg-white/60 md:backdrop-blur-0 backdrop-blur-lg rounded-full md:rounded-none" />
+            <p className='hidden lg:block'>About us</p>
+          </div>
+          <div
+            className="flex flex-col items-center cursor-pointer"
+            onClick={() =>
+              setOverlayContent({
+                type: 'video',
+                content: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', // Replace with your video URL
+              })
+            }
+          >
+            <CirclePlay className="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 text-black md:text-white md:bg-transparent bg-white/60 md:backdrop-blur-0 backdrop-blur-lg rounded-full md:rounded-none" />
+            <p className='hidden lg:block'>Watch Video</p>
+          </div>
+        </div>
+
+        
       </div>
     </div>
   );
