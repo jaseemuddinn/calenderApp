@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import RightSection from './rightSection';
 import Image from 'next/image';
 import Logo from './logo';
+import TimeWeather from './timeWeather';
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -17,12 +18,12 @@ const Calendar = () => {
 
   const occasions = [
     { date: '2025-01-26', name: 'गणतंत्र दिवस', description: 'भारत के संविधान का उत्सव मनाएं' },
-    { date: '2025-03-29', name: 'होली', description: 'रंगों के त्योहार का जश्न मनाएं' },
+    { date: '2025-03-14', name: 'होली', description: 'रंगों के त्योहार का जश्न मनाएं' },
     { date: '2025-04-14', name: 'अंबेडकर जयंती', description: 'डॉ. बी.आर. अंबेडकर की जयंती का उत्सव मनाएं' },
     { date: '2025-05-01', name: 'मजदूर दिवस', description: 'श्रमिकों की उपलब्धियों का उत्सव मनाएं' },
-    { date: '2025-05-23', name: 'ईद-उल-फितर', description: 'रमज़ान के समापन का जश्न मनाएं' },
+    { date: '2025-03-31', name: 'ईद-उल-फितर', description: 'रमज़ान के समापन का जश्न मनाएं' },
     { date: '2025-08-15', name: 'स्वतंत्रता दिवस', description: 'भारत की स्वतंत्रता का उत्सव मनाएं' },
-    { date: '2025-09-04', name: 'ईद-अल-अधा', description: 'त्याग के पर्व का जश्न मनाएं' },
+    { date: '2025-06-07', name: 'ईद-अल-अधा', description: 'त्याग के पर्व का जश्न मनाएं' },
     { date: '2025-10-22', name: 'दशहरा', description: 'खुशहाल दशहरा!' },
     { date: '2025-11-14', name: 'दीवाली', description: 'समृद्ध दीवाली का जश्न मनाएं!' },
     { date: '2025-10-02', name: 'गांधी जयंती', description: 'महात्मा गांधी की जयंती का उत्सव मनाएं' },
@@ -111,14 +112,14 @@ const Calendar = () => {
   return (
     <div className="h-screen overflow-y-auto flex flex-col md:flex-row font-Montserrat">
       <div className="w-full md:w-1/2 md:h-screen p-6 bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-600 md:overflow-y-auto relative">
-        <div className="flex justify-between items-center lg:mb-16 mb-6">
+        <div className="flex justify-between items-center md:mt-2 mb-6 md:mb-12">
           <button
             className="p-2 rounded-full bg-black text-white"
             onClick={handlePreviousMonth}
           >
             <ChevronLeft className="h-4 w-4 md:h-8 md:w-8" />
           </button>
-          <h2 className="lg:text-5xl text-2xl text-center font-semibold text-black">
+          <h2 className="lg:text-5xl text-2xl text-center font-semibold text-black ">
             {months[currentMonth]} {currentYear}
           </h2>
           <button
@@ -136,9 +137,10 @@ const Calendar = () => {
           ))}
           {renderCalendarDays()}
         </div>
-        <div className="invisible md:visible bottom-4 z-20">
-          <Logo />
-        </div>
+          <div className='block md:hidden w-full '>
+          <TimeWeather />
+          </div>
+        
       </div>
 
       <RightSection selectedDate={selectedDate} />

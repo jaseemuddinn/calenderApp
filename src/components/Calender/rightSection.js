@@ -6,17 +6,18 @@ import Logo from './logo';
 import { specialOccasions } from '../json/specialOcassion';
 import { monthlyImages } from '../json/images';
 import './style.css'
+import monthlyContent from '../json/projectInfo';
+import TimeWeather from './timeWeather';
 
 const RightSection = ({ selectedDate }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentMonth] = useState(new Date().getMonth());
   const [currentTime, setCurrentTime] = useState(new Date());
-
   const [weather, setWeather] = useState(null);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [matchingOccasion, setMatchingOccasion] = useState(null);
   const [overlayContent, setOverlayContent] = useState(null);
-  
+
   const handleOverlayClose = (content) => {
     setOverlayContent(null);
   }
@@ -38,29 +39,6 @@ const RightSection = ({ selectedDate }) => {
   }, [selectedDate]);
 
 
-  useEffect(() => {
-    // Fetch weather data here
-    const fetchWeather = async () => {
-      try {
-        const response = await fetch(
-          '/api/weather?q=Ghaziabad'
-        );
-        const data = await response.json();
-        setWeather({
-          temp: data.current.temp_c,
-          description: data.current.condition.text,
-          icon: data.current.condition.icon,
-          humidity: data.current.humidity,
-          wind: data.current.wind_kph,
-          feelsLike: data.current.feelslike_c,
-        });
-      } catch (error) {
-        console.error('Error fetching weather:', error);
-      }
-    };
-    fetchWeather();
-  }, []);
-
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   // Get images for the current month, fallback to January if not found
@@ -79,19 +57,16 @@ const RightSection = ({ selectedDate }) => {
     return () => clearInterval(interval); // Cleanup on component unmount
   }, [currentImages.length]);
 
-  
+
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  const formatTime = (time) =>
-    `${time.getHours()}:${String(time.getMinutes()).padStart(2, '0')}`;
-
-  const formatDate = (time) => {
-    const options = { month: 'long', day: 'numeric' }; // Exclude year
-    return time.toLocaleDateString(undefined, options);
-  };
+  const currentContent = monthlyContent[months[currentMonth]] || {
+    info: 'No information available for this month',
+    video: null,
+  }
 
   return (
     <div onClick={() => {
@@ -161,7 +136,7 @@ const RightSection = ({ selectedDate }) => {
       <div className="relative w-full h-full overflow-hidden">
         {/* For larger screens */}
         <Image
-        key={currentImageIndex}
+          key={currentImageIndex}
           src={currentImages[currentImageIndex]}
           alt="Monthly Image"
           layout="fill"
@@ -173,80 +148,52 @@ const RightSection = ({ selectedDate }) => {
         />
 
         {/* For smaller screens */}
-        <Image
-        key={currentImageIndex}
-          src={currentImages[currentImageIndex]}
-          alt="Monthly Image"
-          layout="fill"
-          objectFit="contain"
-          objectPosition="bottom"
-          className="transition-opacity duration-2000 ease-in-out opacity-100 md:hidden block"
-          style={{
-            animation: 'fade 2s',
-          }}
-        />
-      </div>
-      <div className="absolute flex justify-between md:top-4 md:left-4 md:right-4 text-black font-bold p-4 backdrop-blur-lg w-full md:w-auto rounded-lg z-10 bg-white/60 md:bg-white/20 md:backdrop-blur-lg ">
-        {/* Date and Time Section */}
-        <div className="flex flex-col text-left font-Montserrat">
-          <p className="md:text-2xl xl:text-5xl lg:text-3xl text-xl">{formatTime(currentTime)}</p>
-          <p className="lg:text-3xl xl:text-5xl md:text-2xl text-xl">{formatDate(currentTime)}</p>
+        <div className="bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-600 md:hidden block w-full h-full relative">
+          <Image
+            key={currentImageIndex}
+            src={currentImages[currentImageIndex]}
+            alt="Monthly Image"
+            layout="fill"
+            objectFit="cover"
+            // objectPosition="bottom"
+            className="transition-opacity duration-2000 ease-in-out opacity-100"
+            style={{
+              animation: 'fade 2s',
+            }}
+          />
         </div>
-
-        {/* Weather Section */}
-        {weather && (
-          <div className=" text-xl xl:text-2xl md:gap-2 flex flex-col justify-start">
-            <div className="flex items-center mb-2">
-              <img
-                src="https://i.ibb.co/nz9w8Wb/temprature.png"
-                alt="Temperature Icon"
-                className="md:w-8 md:h-8 h-5 w-5 mr-2"
-              />
-              <p>{weather.temp}°C</p>
-            </div>
-            <div className="flex items-center mb-2">
-              <img
-                src="https://i.ibb.co/1ZWprcD/humidity.png"
-                alt="Humidity Icon"
-                className="md:w-8 md:h-8 h-5 w-5 mr-2"
-              />
-              <p className='text-lg md:text-xl xl:text-2xl'>Humidity: {weather.humidity}%</p>
-            </div>
-            <div className="md:flex items-center hidden">
-              <img
-                src="https://i.ibb.co/3y8g04C/wind.png"
-                alt="Wind Speed Icon"
-                className="w-8 h-8 mr-2 hidden md:block"
-              />
-              <p>Wind: {weather.wind} km/h</p>
-            </div>
-          </div>
-        )}
       </div>
-      <div className='md:hidden absolute bottom-4 px-2 left-0 right-0 flex justify-start md:justify-center space-x-4 z-10'>
+
+      {/* time and weather */}
+      <div className='hidden md:block absolute md:top-4 md:left-4 md:right-4 md:w-auto '>      
+        <TimeWeather />
+      </div>
+
+
+      <div className=' absolute bottom-4 px-2 left-0 right-0 flex justify-start space-x-4 z-10'>
         <Logo />
       </div>
       <div className="relative">
         {/* Main Content */}
-        <div className="text-white absolute flex bottom-4 left-0 right-0 md:justify-center justify-end px-4 space-x-4 z-10">
+        <div className="text-white absolute flex bottom-4 left-0 right-0 justify-end px-4 space-x-4 z-10">
           <div
             className="flex flex-col items-center cursor-pointer"
             onClick={() =>
               setOverlayContent({
                 type: 'info',
-                content: 'Gau Shaala is a non-profit organization dedicated to the welfare of cows and other animals. We provide shelter, food, and medical care to abandoned and injured animals. Our mission is to create a safe and loving environment for all animals, where they can live in peace and harmony. We believe that every animal deserves to be treated with kindness and respect, and we work tirelessly to ensure that all animals in our care receive the love and attention they deserve. Thank you for supporting our cause!',
+                content: currentContent.info,
               })
             }
           >
             <Info className="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 text-black md:text-white md:bg-transparent bg-white/60 md:backdrop-blur-0 backdrop-blur-lg rounded-full md:rounded-none" />
-            <p className='hidden lg:block'>About us</p>
+            <p className='hidden lg:block'>About</p>
           </div>
           <div
             className="flex flex-col items-center cursor-pointer"
             onClick={() =>
               setOverlayContent({
                 type: 'video',
-                content: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', 
+                content: currentContent.video,
               })
             }
           >
