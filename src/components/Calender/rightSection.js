@@ -78,6 +78,8 @@ const RightSection = ({ selectedDate }) => {
 
     return () => clearInterval(interval); // Cleanup on component unmount
   }, [currentImages.length]);
+
+  
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
@@ -159,6 +161,7 @@ const RightSection = ({ selectedDate }) => {
       <div className="relative w-full h-full overflow-hidden">
         {/* For larger screens */}
         <Image
+        key={currentImageIndex}
           src={currentImages[currentImageIndex]}
           alt="Monthly Image"
           layout="fill"
@@ -171,6 +174,7 @@ const RightSection = ({ selectedDate }) => {
 
         {/* For smaller screens */}
         <Image
+        key={currentImageIndex}
           src={currentImages[currentImageIndex]}
           alt="Monthly Image"
           layout="fill"
@@ -242,7 +246,7 @@ const RightSection = ({ selectedDate }) => {
             onClick={() =>
               setOverlayContent({
                 type: 'video',
-                content: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', // Replace with your video URL
+                content: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', 
               })
             }
           >

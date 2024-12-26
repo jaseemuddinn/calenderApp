@@ -1,7 +1,7 @@
 export const specialOccasions = [
     {
       date: "2024-12-25",
-      title: "दिवाली",
+      title: "Christmas",
       description: "Nagar Nigam Moradabad wishes everyone a joyful Christmas, celebrating unity, generosity, and reflection. Let us come together with thoughtful gestures, festive cheer, and a commitment to fostering community spirit and shared values.",
     },
     {
