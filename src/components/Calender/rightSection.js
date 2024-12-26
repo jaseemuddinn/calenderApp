@@ -185,8 +185,8 @@ const RightSection = ({ selectedDate }) => {
       <div className="absolute flex justify-between md:top-4 md:left-4 md:right-4 text-black font-bold p-4 backdrop-blur-lg w-full md:w-auto rounded-lg z-10 bg-white/60 md:bg-white/20 md:backdrop-blur-lg ">
         {/* Date and Time Section */}
         <div className="flex flex-col text-left font-Montserrat">
-          <p className="md:text-2xl xl:text-6xl lg:text-3xl text-xl">{formatTime(currentTime)}</p>
-          <p className="lg:text-3xl xl:text-6xl md:text-2xl text-xl">{formatDate(currentTime)}</p>
+          <p className="md:text-2xl xl:text-5xl lg:text-3xl text-xl">{formatTime(currentTime)}</p>
+          <p className="lg:text-3xl xl:text-5xl md:text-2xl text-xl">{formatDate(currentTime)}</p>
         </div>
 
         {/* Weather Section */}
