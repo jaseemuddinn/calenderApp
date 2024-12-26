@@ -110,7 +110,7 @@ const Calendar = () => {
 
   return (
     <div className="h-screen overflow-y-auto flex flex-col md:flex-row font-Montserrat">
-      <div className="w-full md:w-1/2 md:h-screen p-6 bg-gradient-to-r from-gray-300 via-yellow-500 to-amber-400 md:overflow-y-auto relative">
+      <div className="w-full md:w-1/2 md:h-screen p-6 bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-600 md:overflow-y-auto relative">
         <div className="flex justify-between items-center lg:mb-16 mb-6">
           <button
             className="p-2 rounded-full bg-black text-white"
