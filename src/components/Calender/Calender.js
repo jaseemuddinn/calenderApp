@@ -12,23 +12,23 @@ const Calendar = () => {
   const [today, setToday] = useState(new Date());
 
   const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December',
+    "जनवरी", "फरवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितम्बर", "अक्टूबर", "नवम्बर", "दिसम्बर",
   ];
 
   const occasions = [
-    { date: '2025-01-26', name: 'Republic Day', description: 'Celebrate the Constitution of India' },
-    { date: '2025-03-29', name: 'Holi', description: 'Celebrate the festival of colors' },
-    { date: '2025-04-14', name: 'Ambedkar Jayanti', description: 'Celebrate the birth anniversary of Dr. B.R. Ambedkar' },
-    { date: '2025-05-01', name: 'Labour Day', description: 'Celebrate the achievements of workers' },
-    { date: '2025-05-23', name: 'Eid-ul-Fitr', description: 'Celebrate the end of Ramadan' },
-    { date: '2025-08-15', name: 'Independence Day', description: 'Celebrate India’s independence' },
-    { date: '2025-09-04', name: 'Eid al-Adha', description: 'Celebrate the festival of sacrifice' },
-    { date: '2025-10-22', name: 'Dussehra', description: 'Joyful Dussehra!' },
-    { date: '2025-11-14', name: 'Diwali', description: 'Prosperous Diwali!' },
-    { date: '2025-10-02', name: 'Gandhi Jayanti', description: 'Celebrate the birth anniversary of Mahatma Gandhi' },
-    { date: '2025-12-25', name: 'Christmas', description: 'Celebrate the holiday season' },
+    { date: '2025-01-26', name: 'गणतंत्र दिवस', description: 'भारत के संविधान का उत्सव मनाएं' },
+    { date: '2025-03-29', name: 'होली', description: 'रंगों के त्योहार का जश्न मनाएं' },
+    { date: '2025-04-14', name: 'अंबेडकर जयंती', description: 'डॉ. बी.आर. अंबेडकर की जयंती का उत्सव मनाएं' },
+    { date: '2025-05-01', name: 'मजदूर दिवस', description: 'श्रमिकों की उपलब्धियों का उत्सव मनाएं' },
+    { date: '2025-05-23', name: 'ईद-उल-फितर', description: 'रमज़ान के समापन का जश्न मनाएं' },
+    { date: '2025-08-15', name: 'स्वतंत्रता दिवस', description: 'भारत की स्वतंत्रता का उत्सव मनाएं' },
+    { date: '2025-09-04', name: 'ईद-अल-अधा', description: 'त्याग के पर्व का जश्न मनाएं' },
+    { date: '2025-10-22', name: 'दशहरा', description: 'खुशहाल दशहरा!' },
+    { date: '2025-11-14', name: 'दीवाली', description: 'समृद्ध दीवाली का जश्न मनाएं!' },
+    { date: '2025-10-02', name: 'गांधी जयंती', description: 'महात्मा गांधी की जयंती का उत्सव मनाएं' },
+    { date: '2025-12-25', name: 'क्रिसमस', description: 'छुट्टियों के मौसम का उत्सव मनाएं' }
   ];
+
 
   const renderCalendarDays = () => {
     const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
@@ -41,7 +41,7 @@ const Calendar = () => {
     // Add previous month's last days
     for (let i = firstDayOfMonth; i > 0; i--) {
       days.push(
-        <div key={`prev-${i}`} className="lg:h-14 xl:h-24 2xl:h-32 md:h-16 flex items-center xl:text-5xl text-gray-400 md:text-3xl justify-center rounded-full cursor-pointer transition-all">
+        <div key={`prev-${i}`} className="lg:h-14 xl:h-24  2xl:h-32 md:h-16 flex items-start xl:text-5xl text-gray-400 md:text-3xl justify-center rounded-full cursor-pointer transition-all">
           {lastDateOfLastMonth - i + 1}
         </div>
       );
@@ -59,11 +59,11 @@ const Calendar = () => {
       days.push(
         <div
           key={`curr-${i}`}
-          className={`lg:h-14 xl:h-24 2xl:h-32 md:h-16 flex items-center xl:text-5xl text-black md:text-3xl justify-center rounded-full cursor-pointer transition-all ${isToday
-              ? 'bg-white font-bold'
-              : occasion
-                ? 'border border-cyan-500'
-                : 'hover:bg-gray-200 hover:text-black'
+          className={`lg:h-14 xl:h-24 2xl:h-32 md:h-16 3xl:h-44 h-10 flex flex-col items-center xl:text-5xl text-black md:text-3xl  rounded-full cursor-pointer transition-all ${isToday
+            ? ' font-bold'
+            : occasion
+              ? 'font-medium'
+              : ' hover:text-black'
             }`}
           onClick={() =>
             setSelectedDate(
@@ -71,15 +71,25 @@ const Calendar = () => {
             )
           }
         >
-          {i}
+
+          <div className=''>{i}</div>
+          {isToday && (
+            <div className="flex flex-col items-center">
+              <span className="w-2 h-2 lg:h-4 lg:w-4 bg-blue-500 rounded-full mb-2"></span>
+              <div className="text-xl lg:text-3xl text-center font-medium text-black overflow-hidden md:block">
+              </div>
+            </div>
+          )}
+          {occasion && <div className="text-xs lg:text-lg text-center font-medium text-black overflow-hidden">{occasion.name}</div>}
         </div>
+        // </div>
       );
     }
 
     // Add next month's first days
     for (let i = lastDayOfMonth; i < 6; i++) {
       days.push(
-        <div key={`next-${i}`} className="lg:h-14 xl:h-24 2xl:h-32 md:h-16 flex items-center xl:text-5xl text-gray-400 md:text-3xl justify-center rounded-full cursor-pointer transition-all">
+        <div key={`next-${i}`} className="lg:h-14 xl:h-24 2xl:h-32 md:h-16 flex items-start xl:text-5xl text-gray-400 md:text-3xl justify-center rounded-full cursor-pointer transition-all">
           {i - lastDayOfMonth + 1}
         </div>
       );
@@ -100,7 +110,7 @@ const Calendar = () => {
 
   return (
     <div className="h-screen overflow-y-auto flex flex-col md:flex-row font-Montserrat">
-      <div className="w-full md:w-1/2 h-screen p-6 bg-gradient-to-r from-gray-300 via-yellow-500 to-amber-400 md:overflow-y-auto relative">
+      <div className="w-full md:w-1/2 md:h-screen p-6 bg-gradient-to-r from-gray-300 via-yellow-500 to-amber-400 md:overflow-y-auto relative">
         <div className="flex justify-between items-center lg:mb-16 mb-6">
           <button
             className="p-2 rounded-full bg-black text-white"
@@ -118,7 +128,7 @@ const Calendar = () => {
             <ChevronRight className="h-4 w-4 md:h-8 md:w-8" />
           </button>
         </div>
-        <div className="grid grid-cols-7 gap-2 mb-0 lg:mb-14">
+        <div className="grid grid-cols-7 gap-2 mb-0 lg:mb-6">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
             <div key={day} className="text-center font-bold text-black md:text-xl">
               {day}
@@ -126,7 +136,7 @@ const Calendar = () => {
           ))}
           {renderCalendarDays()}
         </div>
-        <div className="invisible md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 justify-center z-10">
+        <div className="invisible md:visible bottom-4 z-20">
           <Logo />
         </div>
       </div>

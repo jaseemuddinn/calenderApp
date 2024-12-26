@@ -5,6 +5,7 @@ import { CirclePlay, Info, X } from 'lucide-react';
 import Logo from './logo';
 import { specialOccasions } from '../json/specialOcassion';
 import { monthlyImages } from '../json/images';
+import './style.css'
 
 const RightSection = ({ selectedDate }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -15,7 +16,7 @@ const RightSection = ({ selectedDate }) => {
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [matchingOccasion, setMatchingOccasion] = useState(null);
   const [overlayContent, setOverlayContent] = useState(null);
-
+  
   const handleOverlayClose = (content) => {
     setOverlayContent(null);
   }
@@ -156,24 +157,31 @@ const RightSection = ({ selectedDate }) => {
 
       {/* Image Carousel */}
       <div className="relative w-full h-full overflow-hidden">
+        {/* For larger screens */}
         <Image
           src={currentImages[currentImageIndex]}
           alt="Monthly Image"
           layout="fill"
           objectFit="cover"
-          className="transition-opacity duration-1000 hidden md:block"
+          className="transition-opacity duration-2000 ease-in-out opacity-100 md:block hidden"
+          style={{
+            animation: 'fade 2s',
+          }}
         />
+
+        {/* For smaller screens */}
         <Image
           src={currentImages[currentImageIndex]}
           alt="Monthly Image"
           layout="fill"
           objectFit="contain"
-          objectPosition='bottom'
-          className="transition-opacity duration-1000 block md:hidden"
+          objectPosition="bottom"
+          className="transition-opacity duration-2000 ease-in-out opacity-100 md:hidden block"
+          style={{
+            animation: 'fade 2s',
+          }}
         />
       </div>
-
-
       <div className="absolute flex justify-between md:top-4 md:left-4 md:right-4 text-black font-bold p-4 backdrop-blur-lg w-full md:w-auto rounded-lg z-10 bg-white/60 md:bg-white/20 md:backdrop-blur-lg ">
         {/* Date and Time Section */}
         <div className="flex flex-col text-left font-Montserrat">
@@ -183,7 +191,7 @@ const RightSection = ({ selectedDate }) => {
 
         {/* Weather Section */}
         {weather && (
-          <div className=" text-xl xl:text-2xl md:gap-2 flex flex-col">
+          <div className=" text-xl xl:text-2xl md:gap-2 flex flex-col justify-start">
             <div className="flex items-center mb-2">
               <img
                 src="https://i.ibb.co/nz9w8Wb/temprature.png"

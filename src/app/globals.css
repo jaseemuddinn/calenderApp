@@ -19,3 +19,24 @@
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 } */
+/* Target the scrollbar */
+::-webkit-scrollbar {
+  width: 3px; /* For vertical scrollbar */
+  height: 3px; /* For horizontal scrollbar */
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light gray background */
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #9f9f9f; /* Gray thumb */
+  border-radius: 100px; /* Rounded edges */
+}
+
+/* On hover, make the thumb darker */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker gray */
+}
