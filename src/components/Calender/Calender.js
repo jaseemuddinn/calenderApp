@@ -126,7 +126,7 @@ const Calendar = () => {
           ))}
           {renderCalendarDays()}
         </div>
-        <div className="hidden md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 justify-center z-10">
+        <div className="invisible md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 justify-center z-10">
           <Logo />
         </div>
       </div>
