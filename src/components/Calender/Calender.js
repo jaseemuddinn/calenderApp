@@ -59,7 +59,7 @@ const Calendar = () => {
       days.push(
         <div
           key={`curr-${i}`}
-          className={`lg:h-14 xl:h-24 2xl:h-32 md:h-16 3xl:h-44 h-10 flex flex-col items-center xl:text-5xl text-black md:text-3xl  rounded-full cursor-pointer transition-all ${isToday
+          className={`lg:h-14 xl:h-24 2xl:h-32 md:h-16 3xl:h-44 h-10 flex flex-col items-center xl:text-5xl text-black md:text-3xl rounded-full cursor-pointer transition-all ${isToday
             ? ' font-bold'
             : occasion
               ? 'font-medium'
