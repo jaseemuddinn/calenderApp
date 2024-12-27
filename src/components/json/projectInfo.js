@@ -1,15 +1,16 @@
 const monthlyContent = {
     January: {
-      info: "January is a month of new beginnings. Start fresh and achieve your goals this year!",
-      video: "http://example.com/january-video.mp4",
+        name: "बुध बाजार",
+        info: "स्मार्ट सिटी एवं नगर निगम मुरादाबाद द्वारा पुराने बाजारों के नवीनीकरण का कार्य तेजी से चल रहा है। जिसके तहत इंपीरियल तिराहे का एवं बुध बाजार का सौंदर्यीकरण किया गया। बाजारों में नई रौनक लाने के कार्य चल रहे है। फसाड का कार्य एवं प्रकाश की उचित व्यवस्था की गई। दुकानों के डिजिटल बोर्ड एवं फुटपाथ निर्माण भी हुआ।",
+        video: "http://example.com/january-video.mp4",
     },
     February: {
-      info: "February is the month of love. Celebrate Valentine's Day with kindness and care!",
-      video: "http://example.com/february-video.mp4",
+        info: "February is the month of love. Celebrate Valentine's Day with kindness and care!",
+        video: "http://example.com/february-video.mp4",
     },
     March: {
-      info: "March is the month of growth. Embrace change and welcome new opportunities!",
-      video: "http://example.com/march-video.mp4",
+        info: "March is the month of growth. Embrace change and welcome new opportunities!",
+        video: "http://example.com/march-video.mp4",
     },
     April: {
         info: "April is the month of renewal. Enjoy the blooming flowers and warmer weather!",
@@ -44,11 +45,11 @@ const monthlyContent = {
         video: "http://example.com/november-video.mp4",
     },
     December: {
-        info: "Gau Shaala is a non-profit organization dedicated to the welfare of cows and other animals. We provide shelter, food, and medical care to abandoned and injured animals. Our mission is to create a safe and loving environment for all animals, where they can live in peace and harmony. We believe that every animal deserves to be treated with kindness and respect, and we work tirelessly to ensure that all animals in our care receive the love and attention they deserve. Thank you for supporting our cause!",
+        name: "इम्पीरियल तिराहे",
+        info: "स्मार्ट सिटी एवं नगर निगम मुरादाबाद द्वारा पुराने बाजारों के नवीनीकरण का कार्य तेजी से चल रहा है। जिसके तहत इंपीरियल तिराहे का एवं बुध बाजार का सौंदर्यीकरण किया गया। बाजारों में नई रौनक लाने के कार्य चल रहे है। फसाड का कार्य एवं प्रकाश की उचित व्यवस्था की गई। दुकानों के डिजिटल बोर्ड एवं फुटपाथ निर्माण भी हुआ। ",
         video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     }
-    
-  };
-  
-  export default monthlyContent;
-  
+
+};
+
+export default monthlyContent;

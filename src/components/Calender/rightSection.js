@@ -12,8 +12,6 @@ import TimeWeather from './timeWeather';
 const RightSection = ({ selectedDate }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentMonth] = useState(new Date().getMonth());
-  const [currentTime, setCurrentTime] = useState(new Date());
-  const [weather, setWeather] = useState(null);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [matchingOccasion, setMatchingOccasion] = useState(null);
   const [overlayContent, setOverlayContent] = useState(null);
@@ -64,6 +62,7 @@ const RightSection = ({ selectedDate }) => {
   }, []);
 
   const currentContent = monthlyContent[months[currentMonth]] || {
+    name: 'No Information',
     info: 'No information available for this month',
     video: null,
   }
@@ -91,11 +90,11 @@ const RightSection = ({ selectedDate }) => {
       )}
       {overlayContent && (
         <div
-          className="absolute inset-0 flex items-center justify-center   z-20"
+          className="absolute inset-0 flex items-center justify-center z-20"
           onClick={handleOverlayClose}
         >
           <div
-            className="absolute md:top-auto md:bottom-32 left-4 right-4 bg-white/60 backdrop-blur-lg p-4 rounded-lg shadow-lg z-20 overflow-y-auto h-4/5 md:min-h-min max-h-[90vh] md:h-1/3"
+            className="absolute md:top-auto md:bottom-32 left-4 right-4 bg-white/60 backdrop-blur-lg p-4 rounded-lg shadow-lg z-20 overflow-y-auto h-4/5 md:min-h-min max-h-[90vh] md:h-1/4"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -109,7 +108,7 @@ const RightSection = ({ selectedDate }) => {
             {/* Conditional Content */}
             {overlayContent.type === 'info' && (
               <div className=''>
-                <h2 className="text-xl font-bold">About Gau Shaala</h2>
+                <h2 className="text-xl font-bold">{currentContent.name}</h2>
                 <p className="mt-2">{overlayContent.content}</p>
               </div>
             )}
@@ -134,28 +133,14 @@ const RightSection = ({ selectedDate }) => {
 
       {/* Image Carousel */}
       <div className="relative w-full h-full overflow-hidden">
-        {/* For larger screens */}
-        <Image
-          key={currentImageIndex}
-          src={currentImages[currentImageIndex]}
-          alt="Monthly Image"
-          layout="fill"
-          objectFit="cover"
-          className="transition-opacity duration-2000 ease-in-out opacity-100 md:block hidden"
-          style={{
-            animation: 'fade 2s',
-          }}
-        />
-
-        {/* For smaller screens */}
-        <div className="bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-600 md:hidden block w-full h-full relative">
+        
+        <div className="bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-600 w-full h-full relative">
           <Image
             key={currentImageIndex}
             src={currentImages[currentImageIndex]}
             alt="Monthly Image"
             layout="fill"
             objectFit="cover"
-            // objectPosition="bottom"
             className="transition-opacity duration-2000 ease-in-out opacity-100"
             style={{
               animation: 'fade 2s',
