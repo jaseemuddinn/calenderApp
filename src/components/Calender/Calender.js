@@ -137,6 +137,9 @@ const Calendar = () => {
           ))}
           {renderCalendarDays()}
         </div>
+        <div>
+          <p className='text-center text-sm md:text-lg lg:text-2xl 2xl:text-3xl 3xl:text-4xl  md:font-bold'>बदलता मुरादाबाद, संवरता मुरादाबाद। <br />Creating Smart, Creating Better!</p>
+        </div>
           <div className='block md:hidden w-full '>
           <TimeWeather />
           </div>
