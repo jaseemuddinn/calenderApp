@@ -40,11 +40,11 @@ const RightSection = ({ selectedDate }) => {
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   // Get images for the current month, fallback to January if not found
-  const currentImages = monthlyImages[currentMonth]?.length
-    ? monthlyImages[currentMonth]
+  const currentImages = monthlyImages[months[currentMonth]]?.length
+    ? monthlyImages[months[currentMonth]]
     : monthlyImages.January;
 
-
+  console.log("Current Images:", currentImages);
 
   // Update current image every 10 seconds
   useEffect(() => {
@@ -140,8 +140,7 @@ const RightSection = ({ selectedDate }) => {
             src={currentImages[currentImageIndex]}
             alt="Monthly Image"
             layout="fill"
-            objectFit="cover"
-            className="transition-opacity duration-2000 ease-in-out opacity-100"
+            className="transition-opacity duration-2000 ease-in-out opacity-100 object-cover"
             style={{
               animation: 'fade 2s',
             }}
