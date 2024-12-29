@@ -105,43 +105,43 @@ export const specialOccasions = [
       description: "Nagar Nigam Moradabad wishes everyone a Merry Christmas, celebrating the birth of Jesus Christ and the spirit of love, joy, and giving. Let us come together to share the festive season with family, friends, and community.",
     },
     {
-        "date": "2025-08-09",
-        "title": "Raksha Bandhan",
+        date: "2025-08-09",
+        title: "Raksha Bandhan",
         "description": "Nagar Nigam Moradabad wishes everyone a joyous Raksha Bandhan, celebrating the bond of love and protection between siblings. May this festival strengthen family ties and bring happiness to all."
     },
     {
-        "date": "2025-08-15",
-        "title": "Independence Day",
-        "description": "Nagar Nigam Moradabad celebrates the spirit of freedom and patriotism this Independence Day. Let us honor the sacrifices of our freedom fighters and work towards a prosperous and united nation."
+        date: "2025-08-15",
+        title: "Independence Day",
+        description: "Nagar Nigam Moradabad celebrates the spirit of freedom and patriotism this Independence Day. Let us honor the sacrifices of our freedom fighters and work towards a prosperous and united nation."
     },
     {
-        "date": "2025-08-16",
-        "title": "Janmashtami",
-        "description": "Nagar Nigam Moradabad extends warm wishes on Janmashtami, the birth anniversary of Lord Krishna. May his teachings of love, humility, and wisdom inspire us all."
+        date: "2025-08-16",
+        title: "Janmashtami",
+        description: "Nagar Nigam Moradabad extends warm wishes on Janmashtami, the birth anniversary of Lord Krishna. May his teachings of love, humility, and wisdom inspire us all."
     },
     {
-        "date": "2025-09-05",
-        "title": "Eid e Milad",
-        "description": "Nagar Nigam Moradabad wishes everyone a blessed Eid e Milad, celebrating the birth of Prophet Muhammad. Let us follow his teachings of compassion, peace, and harmony."
+        date: "2025-09-05",
+        title: "Eid e Milad",
+        description: "Nagar Nigam Moradabad wishes everyone a blessed Eid e Milad, celebrating the birth of Prophet Muhammad. Let us follow his teachings of compassion, peace, and harmony."
     },
     {
-        "date": "2025-10-01",
-        "title": "Maha Navami",
-        "description": "Nagar Nigam Moradabad wishes everyone a blessed Maha Navami, marking the end of Navratri. Let us seek the blessings of Goddess Durga and celebrate the triumph of good over evil."
+        date: "2025-10-01",
+        title: "Maha Navami",
+        description: "Nagar Nigam Moradabad wishes everyone a blessed Maha Navami, marking the end of Navratri. Let us seek the blessings of Goddess Durga and celebrate the triumph of good over evil."
     },
     {
-        "date": "2025-10-02",
-        "title": "Gandhi Jayanti",
-        "description": "Nagar Nigam Moradabad pays tribute to Mahatma Gandhi on his birth anniversary. Let us remember his values of truth, non-violence, and selfless service to the nation."
+        date: "2025-10-02",
+        title: "Gandhi Jayanti",
+        description: "Nagar Nigam Moradabad pays tribute to Mahatma Gandhi on his birth anniversary. Let us remember his values of truth, non-violence, and selfless service to the nation."
     },
     {
-        "date": "2025-10-23",
-        "title": "Bhai Dooj",
-        "description": "Nagar Nigam Moradabad wishes everyone a joyful Bhai Dooj, celebrating the beautiful bond between brothers and sisters. May this festival bring happiness and togetherness."
+        date: "2025-10-23",
+        title: "Bhai Dooj",
+        description: "Nagar Nigam Moradabad wishes everyone a joyful Bhai Dooj, celebrating the beautiful bond between brothers and sisters. May this festival bring happiness and togetherness."
     },
     {
-        "date": "2025-11-05",
-        "title": "Guru Nanak Jayanti",
-        "description": "Nagar Nigam Moradabad extends warm wishes on Guru Nanak Jayanti, celebrating the birth of Guru Nanak Dev Ji. Let us follow his teachings of equality, humility, and service to humanity."
+        date: "2025-11-05",
+        title: "Guru Nanak Jayanti",
+        description: "Nagar Nigam Moradabad extends warm wishes on Guru Nanak Jayanti, celebrating the birth of Guru Nanak Dev Ji. Let us follow his teachings of equality, humility, and service to humanity."
     }
   ];

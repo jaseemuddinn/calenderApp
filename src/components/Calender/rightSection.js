@@ -9,9 +9,9 @@ import './style.css'
 import monthlyContent from '../json/projectInfo';
 import TimeWeather from './timeWeather';
 
-const RightSection = ({ selectedDate }) => {
+const RightSection = ({ selectedDate, currentMonth }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [currentMonth] = useState(new Date().getMonth());
+  // const [currentMonth] = useState(new Date().getMonth());
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [matchingOccasion, setMatchingOccasion] = useState(null);
   const [overlayContent, setOverlayContent] = useState(null);

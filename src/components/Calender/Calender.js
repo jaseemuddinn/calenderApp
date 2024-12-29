@@ -146,7 +146,7 @@ const Calendar = () => {
         
       </div>
 
-      <RightSection selectedDate={selectedDate} />
+      <RightSection selectedDate={selectedDate} currentMonth={currentMonth} />
     </div>
   );
 };
