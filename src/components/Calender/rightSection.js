@@ -56,11 +56,6 @@ const RightSection = ({ selectedDate, currentMonth }) => {
   }, [currentImages.length]);
 
 
-  useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
-
   const currentContent = monthlyContent[months[currentMonth]] || {
     name: 'No Information',
     info: 'No information available for this month',

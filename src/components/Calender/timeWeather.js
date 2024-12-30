@@ -5,6 +5,11 @@ function TimeWeather() {
     const [weather, setWeather] = useState(null);
     const [currentTime, setCurrentTime] = useState(new Date());
 
+    useEffect(() => {
+        const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+        return () => clearInterval(timer);
+    }, []);
+
 
     const formatTime = (time) =>
         `${time.getHours()}:${String(time.getMinutes()).padStart(2, '0')}`;
